@@ -5,16 +5,18 @@ import puppeteer from 'puppeteer';
  * Scrapes TikTok videos and returns their URL.
  * @param numVideos The number of videos to fetch. Defaults to 10.
  * @param videoCardSelector The CSS selector for a single video card. Defaults to 'div[data-e2e="user-post-item"]'.
+ * @param username Optional: The TikTok username to scrape videos from (e.g., 'tiktok'). Defaults to a generic TikTok page if not provided.
  * @returns A promise that resolves to an array of video URLs.
  */
-export async function scrapeVideos(numVideos: number = 10, videoCardSelector: string = 'div[data-e2e="user-post-item"]'): Promise<{ videoUrl: string }[]> {
+export async function scrapeVideos(numVideos: number = 10, videoCardSelector: string = 'div[data-e2e="user-post-item"]', username?: string): Promise<{ videoUrl: string }[]> {
   let browser;
   try {
     // Step 1: Open browser for puzzle solving and subsequent scraping
     browser = await puppeteer.launch({ headless: false }); // Launch in non-headless mode for user interaction and persistent session
     const page = await browser.newPage();
 
-    await page.goto('https://www.tiktok.com/@tiktok', { waitUntil: 'networkidle2', timeout: 60000 });
+    const tiktokUrl = username ? `https://www.tiktok.com/@${username}` : 'https://www.tiktok.com/@tiktok';
+    await page.goto(tiktokUrl, { waitUntil: 'networkidle2', timeout: 60000 });
 
     console.log("\n\n================================================================================");
     console.log("A browser window has opened. Please solve any TikTok puzzle/CAPTCHA if it appears.");

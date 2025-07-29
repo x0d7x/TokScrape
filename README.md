@@ -1,10 +1,12 @@
-# TikTok Scraper Library
+# TokScrape
+
+**TokScrape: A lightweight Node.js library for efficiently extracting TikTok video URLs.**
 
 This project provides a TikTok video scraper that can be used as a Node.js library.
 
 ## Features
 
-- Scrape TikTok video URLs.
+- Scrape TikTok video URLs from a specified username.
 - Specify the number of videos to fetch.
 - Usable as a standalone Node.js library.
 
@@ -31,7 +33,8 @@ import { scrapeVideos } from './src'; // Adjust path as needed based on your pro
 
 async function getTikTokData() {
   try {
-    const videos = await scrapeVideos(5); // Fetch 5 videos
+    // Scrape 5 videos from the 'tiktok' username
+    const videos = await scrapeVideos(5, 'div[data-e2e="user-post-item"]', 'tiktok');
     console.log(videos);
   } catch (error) {
     console.error('Error scraping videos:', error);
@@ -41,10 +44,11 @@ async function getTikTokData() {
 getTikTokData();
 ```
 
-### `scrapeVideos(numVideos?: number, videoCardSelector?: string)`
+### `scrapeVideos(numVideos?: number, videoCardSelector?: string, username?: string)`
 
 - `numVideos` (optional): The number of videos to fetch. Defaults to 10 if not provided.
 - `videoCardSelector` (optional): The CSS selector for a single video card. Defaults to `div[data-e2e="user-post-item"]`.
+- `username` (optional): The TikTok username to scrape videos from (e.g., 'tiktok'). If not provided, it defaults to a generic TikTok page.
 - **Returns**: A Promise that resolves to an array of objects, each containing `videoUrl` (string) for a TikTok video.
 
 ## Important Notes
