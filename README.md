@@ -14,7 +14,7 @@ This project provides a TikTok video scraper that can be used as a Node.js libra
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/tiktok-scraper.git
+   git clone https://github.com/x0d7x/tiktok-scraper.git
    cd tiktok-scraper
    ```
 2. Install dependencies:
