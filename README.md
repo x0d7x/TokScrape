@@ -2,6 +2,9 @@
 
 **TokScrape: A lightweight Node.js library for efficiently extracting TikTok video URLs.**
 
+https://github.com/user-attachments/assets/3da94b83-91aa-4603-8ae8-6b75eed73e5d
+
+
 This project provides a TikTok video scraper that can be used as a Node.js library.
 
 ## Features
